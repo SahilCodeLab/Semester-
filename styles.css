@@ -209,6 +209,7 @@
       font-size: 0.95rem;
       font-weight: 500;
       box-shadow: 0 4px 12px rgba(67, 97, 238, 0.2);
+     white-space:nowrap;
     }
     
     table {
