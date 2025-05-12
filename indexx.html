@@ -13,4 +13,780 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>BA Semester II Premium Timetable</h1>
+      <div class="subtitle">Department of Arts • Session 2023-2024</div>
+    </div>
+    
+    <div class="tabs">
+      <div class="tab" onclick="showDay('sunday')">
+        <i class="fas fa-calendar-day"></i> Sunday
+      </div>
+      <div class="tab" onclick="showDay('monday')">
+        <i class="fas fa-calendar-day"></i> Monday
+      </div>
+      <div class="tab" onclick="showDay('tuesday')">
+        <i class="fas fa-calendar-day"></i> Tuesday
+      </div>
+      <div class="tab" onclick="showDay('wednesday')">
+        <i class="fas fa-calendar-day"></i> Wednesday
+      </div>
+      <div class="tab" onclick="showDay('thursday')">
+        <i class="fas fa-calendar-day"></i> Thursday
+      </div>
+      <div class="tab" onclick="showDay('friday')">
+        <i class="fas fa-calendar-day"></i> Friday
+      </div>
+      <div class="tab" onclick="showDay('saturday')">
+        <i class="fas fa-calendar-day"></i> Saturday
+      </div>
+    </div>
+    
+    <!-- Sunday -->
+    <div id="sunday" class="tab-content">
+      <div class="day-header">
+        <h2 class="day-title">Sunday</h2>
+        <div class="current-time" id="sunday-time"></div>
+      </div>
+      <div class="holiday-content">
+        <i class="fas fa-umbrella-beach"></i>
+        <h2>Weekend Holiday</h2>
+        <p>No classes scheduled today. Enjoy your day off and prepare for the week ahead!</p>
+      </div>
+    </div>
+    
+    <!-- Monday -->
+    <div id="monday" class="tab-content">
+      <div class="day-header">
+        <h2 class="day-title">Monday</h2>
+        <div class="current-time" id="monday-time"></div>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Class</th>
+            <th>Room</th>
+            <th>Teacher</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>10:00 - 11:00</td>
+            <td class="subject-code">URDG-MINNOR/CC<br>HING-MINNOR/CC<br>ENGG-MINNOR/CC<br>BNGG-MINNOR/CC</td>
+            <td class="room">R102<br>R205<br>R223<br>R219</td>
+            <td class="teacher">XX<br>XX<br>MK<br>MDR</td>
+          </tr>
+          <tr>
+            <td>11:00 - 12:00</td>
+            <td class="subject-code">HISA-MAJOR<br>EDCA-MAJOR<br>EDCA-MAJOR<br>PLSA-MAJOR<br>PHIA-MAJOR<br>JORA-MAJOR<br>HINA-MAJOR<br>ENGA-MAJOR<br>BNGA-MAJOR</td>
+            <td class="room">R207<br>R221<br>R228<br>R203<br>R201<br>R102<br>R209<br>R223<br>R219</td>
+            <td class="teacher">DB<br>JKP<br>SG<br>MGH<br>SB<br>SC<br>XX<br>SG<br>DR</td>
+          </tr>
+          <tr>
+            <td>12:00 - 1:00</td>
+            <td class="subject-code">HISA-SEC II<br>EDCA-SEC II<br>SOCA-SEC II<br>PLSA-SEC II<br>PHIA-SEC II<br>JORA-SEC II<br>HINA-SEC II<br>ENGA-SEC II<br>BNGA-SEC II</td>
+            <td class="room">R207<br>R221<br>R228<br>R203<br>R201<br>R102<br>R209<br>R223<br>R219</td>
+            <td class="teacher">DB<br>RA<br>JPC<br>SC<br>SB<br>SC<br>DKS<br>MK<br>DR</td>
+          </tr>
+          <tr>
+            <td>1:00 - 2:00</td>
+            <td class="subject-code">PLSG-MINNOR/CC<br>SANG-MINNOR/CC</td>
+            <td class="room">R203<br>R103</td>
+            <td class="teacher">MG<br>MM</td>
+          </tr>
+          <tr>
+            <td>2:00 - 3:00</td>
+            <td class="subject-code">HISA-MAJOR<br>EDCA-MAJOR<br>SOCA-MAJOR<br>PLSA-MAJOR<br>JORA-MAJOR<br>HINA-MAJOR<br>ENGA-MAJOR<br>BNGA-MAJOR</td>
+            <td class="room">R207<br>R221<br>R228<br>R203<br>R201<br>R102<br>R209<br>R223<br>R219</td>
+            <td class="teacher">LB<br>IS<br>AC<br>SC<br>TRB<br>ABL<br>BKS<br>Mi<br>AKD</td>
+          </tr>
+          <tr>
+            <td>3:00 - 4:00</td>
+            <td class="subject-code">EDCG-MINNOR/CC<br>FMSG-MINNOR/CC</td>
+            <td class="room">R219<br>R204</td>
+            <td class="teacher">SRC<br>DC</td>
+          </tr>
+          <tr>
+            <td>4:00 - 5:00</td>
+            <td class="subject-code">PHIG-MINNOR/CC<br>JORG-MINNOR/CC<br>PEDG-MINNOR/CC</td>
+            <td class="room">R201<br>R102<br>R115</td>
+            <td class="teacher">TRB<br>RK<br>BS</td>
+          </tr>
+          <tr>
+            <td>5:00 - 6:00</td>
+            <td class="subject-code">SOCA-MDC-2<br>PEDG-MDC-2<br>FMSG-MDC-2</td>
+            <td class="room">R201<br>R115<br>R224</td>
+            <td class="teacher">AC<br>BS<br>DC</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <!-- Tuesday -->
+    <div id="tuesday" class="tab-content">
+      <div class="day-header">
+        <h2 class="day-title">Tuesday</h2>
+        <div class="current-time" id="tuesday-time"></div>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Class</th>
+            <th>Room</th>
+            <th>Teacher</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>10:00 - 11:00</td>
+            <td class="subject-code">HISA-MAJOR<br>EDCA-MAJOR<br>SOCA-MAJOR<br>PLSA-MAJOR<br>PHIA-MAJOR<br>JORA-MAJOR<br>HINA-MAJOR<br>ENGA-MAJOR<br>BNGA-MAJOR<br>ACELG-GEN</td>
+            <td class="room">R207<br>R221<br>R228<br>R203<br>R201<br>R103<br>R209<br>R223<br>R219<br>R127</td>
+            <td class="teacher">SB<br>IS<br>SBD<br>MG<br>DM<br>ABL<br>PM<br>MK<br>MDR<br>XX</td>
+          </tr>
+          <tr>
+            <td>11:00 - 12:00</td>
+            <td class="subject-code">HISA-SEC-II(H)<br>EDCA-SEC-II(H)<br>SOCA-SEC-II(H)<br>PLSA-SEC-II(H)<br>PHIA-SEC-II(H)<br>JORA-SEC-II(H)<br>HINA-SEC-II(H)<br>ENGA-SEC-II(H)<br>BNGA-SEC-II(H)</td>
+            <td class="room">R207<br>R221<br>R228<br>R208<br>R201<br>R102<br>R209<br>R223<br>R219</td>
+            <td class="teacher">DS<br>MBM<br>SG<br>CS<br>XX<br>SC<br>PM<br>SB<br>AKD</td>
+          </tr>
+          <tr>
+            <td>12:00 - 1:00</td>
+            <td class="subject-code">PLSG-MINOR/CC<br>SANG-MINOR/CC</td>
+            <td class="room">R208<br>R207</td>
+            <td class="teacher">CS<br>MM</td>
+          </tr>
+          <tr>
+            <td>1:00 - 2:00</td>
+            <td class="subject-code">BNGG-MINOR/CC<br>ENGG-MINOR/CC<br>HING-MINOR/CC<br>URDG-MINOR/CC<br>PEDG-MINOR(SC)</td>
+            <td class="room">R219<br>R223<br>R209<br>R207<br>R115</td>
+            <td class="teacher">PN<br>RB<br>PM<br>SK<br>BS</td>
+          </tr>
+          <tr>
+            <td>2:00 - 3:00</td>
+            <td class="subject-code">AEC-BNG-ARTS<br>AEC-HING<br>AEC-URDU<br>AEC-SANG<br>AEC(SC)</td>
+            <td class="room">R219<br>R209<br>R103<br>XX<br>XX</td>
+            <td class="teacher">PB<br>SP<br>SK<br>DS<br>HP</td>
+          </tr>
+          <tr>
+            <td>3:00 - 4:00</td>
+            <td class="subject-code">HISG-MINOR/CC</td>
+            <td class="room">R207</td>
+            <td class="teacher">SB</td>
+          </tr>
+          <tr>
+            <td>4:00 - 5:00</td>
+            <td class="subject-code">EDCG-MINOR/CC<br>FMSG-MINOR/CC</td>
+            <td class="room">R221<br>R204</td>
+            <td class="teacher">SS<br>DC</td>
+          </tr>
+          <tr>
+            <td>5:00 - 6:00</td>
+            <td class="subject-code">FMSG-MDC<br>SDVA-MDC<br>FMSG-MDC</td>
+               <td class="room">R155<br>R226<br>R304</td>
+            <td class="teacher">BS<br>JPC<br>PG</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    
+    <!-- Wednesday -->
+    <div id="wednesday" class="tab-content">
+      <div class="day-header">
+        <h2 class="day-title">Wednesday</h2>
+        <div class="current-time" id="wednesday-time"></div>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Class</th>
+            <th>Room</th>
+            <th>Teacher</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>10:00 - 11:00</td>
+            <td class="subject-code">ENGA-MAJOR</td>
+            <td class="room">R225</td>
+            <td class="teacher">MB</td>
+          </tr>
+          <tr>
+            <td>11:00 - 12:00</td>
+            <td class="subject-code">HISA-SEC II(H)<br>EDCA-SEC II(H)<br>SOCA-SEC II(H)<br>PLSA-SEC II(H)<br>PHIA-SEC II(H)<br>JORA-SEC II(H)<br>HINA-SEC II(H)<br>ENGA-SEC II(H)<br>BNGA-SEC II(H)</td>
+            <td class="room">R207<br>R221<br>R228<br>R208<br>R201<br>R102<br>R209<br>R223<br>R219</td>
+            <td class="teacher">SB<br>JKP<br>SBD<br>TB<br>DM<br>SRB<br>XXX<br>MI<br>MDR</td>
+          </tr>
+          <tr>
+            <td>12:00 - 1:00</td>
+            <td class="subject-code">HISA-MAJOR-DSC<br>EDCA-MAJOR-DSC<br>SOCA-MAJOR-DSC<br>PLSA-MAJOR-DSC<br>PHIA-MAJOR-DSC<br>JORA-MAJOR-DSC<br>HINA-MAJOR-DSC<br>ENGA-MAJOR-DSC<br>BNGA-MAJOR-DSC</td>
+            <td class="room">R207<br>R221<br>R228<br>R208<br>R201<br>R102<br>R209<br>R223<br>R219</td>
+            <td class="teacher">DS<br>MBM<br>JPC<br>TB<br>DM<br>SRB<br>SP<br>RB<br>PN</td>
+          </tr>
+          <tr>
+            <td>1:00 - 2:00</td>
+            <td class="subject-code">PLSG-MINOR/CC<br>SANG-MINOR/CC<br>PEDG-MINOR(SC)</td>
+            <td class="room">R208<br>R207<br>R115</td>
+            <td class="teacher">MG<br>MM<br>JG</td>
+          </tr>
+          <tr>
+            <td>2:00 - 3:00</td>
+            <td class="subject-code">PHIG-MINOR/CC<br>JORG-MINOR/CC<br>PEDG-MINOR/CC</td>
+            <td class="room">R201<br>R102<br>R115</td>
+            <td class="teacher">DM<br>PN<br>JG</td>
+          </tr>
+          <tr>
+            <td>3:00 - 4:00</td>
+            <td class="subject-code">EDCG-MINOR/CC<br>FMSG-MINOR/CC</td>
+            <td class="room">R222<br>R204</td>
+            <td class="teacher">SS<br>PG</td>
+          </tr>
+          <tr>
+            <td>4:00 - 5:00</td>
+            <td class="subject-code">VAC</td>
+            <td class="room">R115</td>
+            <td class="teacher">JG</td>
+          </tr>
+          <tr>
+            <td>5:00 - 6:00</td>
+            <td class="subject-code">No Class</td>
+            <td class="room">-</td>
+            <td class="teacher">-</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <!-- Thursday -->
+    <div id="thursday" class="tab-content">
+      <div class="day-header">
+        <h2 class="day-title">Thursday</h2>
+        <div class="current-time" id="thursday-time"></div>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Class</th>
+            <th>Room</th>
+            <th>Teacher</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>10:00 - 11:00</td>
+            <td class="subject-code">
+EDCG-MINOR/CC <br>
+FMSG-MINOR/CC              
+            </td>
+            <td class="room">
+R221 <br>
+R204              
+            </td>
+            <td class="teacher">
+ SS <br>
+PG 
+            </td>
+          </tr>
+          <tr>
+            <td>11:00 - 12:00</td>
+            <td class="subject-code">
+URDG-MINOR/CC <br>
+HING-MINOR/CC <br>
+ENGG-MINOR/CC <br>
+BNGG-MINOR/CC <br>
+SARA-MINOR/CC              
+            </td>
+            <td class="room">
+R207 <br>
+R209 <br>
+R223 <br>
+R219               
+            </td>
+            <td class="teacher">
+SK<br>
+-<br>
+SB <br>
+MDR              
+            </td>
+          </tr>
+          <tr>
+            <td>12:00 - 1:00</td>
+            <td class="subject-code">
+HISA-MAJOR <br>
+EDCA-MINOR/CC <br>
+SOCA-MINOR/CC <br>
+PLSA-MINOR/CC <br>
+PHIA-MINOR/CC <br>
+JORA-MINOR/CC <br>
+HINA-MINOR/CC <br>
+ENGA-MINOR/CC <br>
+BNGA-MINOR/CC <br>
+PEDG-MINOR/CC 
+            </td>
+            <td class="room">
+R207 <br>
+R221<br>
+R228<br>
+R208<br>
+R201 <br>
+R102<br>
+R209 <br>
+R223 <br>
+R219<br>
+R115
+            </td>
+            <td class="teacher">
+DB-MINOR/CC <br>
+CS-MINOR/CC <br>
+SG-MINOR/CC <br>
+CS-MINOR/CC <br>
+SB-MINOR/CC <br>
+ABL-MINOR/CC <br>
+SP-MINOR/CC <br>
+SB-MINOR/CC <br>
+PN-MINOR/CC <br>
+JG-MINOR/CC 
+            </td>
+          </tr>
+          <tr>
+            <td>1:00 - 2:00</td>
+            <td class="subject-code">
+PHIG-MINOR/CC <br>
+JORA-MINOR/CC-1 <br>
+PEDG-MINOR/CC-1<br>
+            </td>
+            <td class="room">
+R201 <br>
+R102 <br>
+R103
+            </td>
+            <td class="teacher">
+  -<br>
+  PN <br>
+  JG
+            </td>
+          </tr>
+          <tr>
+            <td>2:00 - 3:00</td>
+            <td class="subject-code">
+HISG-MINOR/CC
+            </td>
+            <td class="room">R207</td>
+            <td class="teacher">DB</td>
+          </tr>
+          <tr>
+            <td>3:00 - 4:00</td>
+            <td class="subject-code">
+EDCG-MINOR/CC <br>
+FMSG-MINOR/CC
+            </td>
+            <td class="room">
+R221 <br>
+R204
+            </td>
+            <td class="teacher">
+SS <br>
+DC
+            </td>
+          </tr>
+          <tr>
+            <td>4:00 - 5:00</td>
+            <td class="subject-code">
+ VSC-1             
+            </td>
+            <td class="room">
+R207
+</td>
+            <td class="teacher">
+-
+              </td>
+          </tr>
+          <tr>
+            <td>5:00 - 6:00</td>
+            <td class="subject-code">
+PEDG-MDC <br>
+FMSG-MINOR/CC <br>
+SOCA-MINOR/CC 
+            </td>
+            <td class="room">
+R115 <br>
+R224 <br>
+R201
+            </td>
+            <td class="teacher">
+   -<br>
+   DC <br>
+   SG
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <!-- Friday -->
+    <div id="friday" class="tab-content">
+      <div class="day-header">
+        <h2 class="day-title">Friday</h2>
+        <div class="current-time" id="friday-time"></div>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Class</th>
+            <th>Room</th>
+            <th>Teacher</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>10:00 - 11:00</td>
+            <td class="subject-code">
+PLSG-MINOR/CC <br>
+SANG-MINOR/CC 
+            </td>
+            <td class="room">
+R208 <br>
+R209 
+            </td>
+            <td class="teacher">
+SC <br>
+DC
+              </td>
+          </tr>
+          <tr>
+            <td>11:00 - 12:00</td>
+            <td class="subject-code">
+BNGG-MINOR/CC-1 <br>
+ENGG-MINOR/CC <br>
+HING-MINOR/CC <br>
+URDG-MINOR/CC 
+            </td>
+            <td class="room">
+R219<br>
+R223<br>
+R209<br>
+R207
+            </td>
+            <td class="teacher">
+DR<br>
+HP<br>
+BKS<br>
+-<br>
+            </td>
+          </tr>
+          <tr>
+            <td>12:00 - 1:00</td>
+            <td class="subject-code">
+PHIG-MINOR/CC <br>
+JORG-MINOR/CC <br>
+PEDG-MINOR/CC <br>
+            </td>
+            <td class="room">
+  R201 <br>
+  R102 <br>
+  R115
+  </td>
+            <td class="teacher">
+  TRB <br>
+  PN <br>
+  -
+              </td>
+          </tr>
+          <tr>
+            <td>1:00 - 2:00</td>
+            <td class="subject-code">
+HISA-MAJOR <br>
+EDCA-MAJOR <br>
+SOCA-MAJOR <br>
+PLSA-MAJOR <br>
+PHIA-MAJOR <br>
+JORA-MAJOR <br>
+HINA-MAJOR <br>
+ENGA-MAJOR <br>
+BNGA
+            </td>
+            <td class="room">
+R207 <br>
+R221 <br>
+R228 <br>
+R208 <br>
+R201 <br>
+R103 <br>
+R209 <br>
+R223 <br>
+R219
+            </td>
+            <td class="teacher">
+SGD <br>
+JKP <br>
+- <br>
+MGH <br>
+TRB <br>
+SRB <br>
+PM <br>
+SB <br>
+PB
+            </td>
+          </tr>
+          
+          <tr>
+            <td>2:00 - 3:00</td>
+            <td class="subject-code">
+BNGG-AEC <br>
+HING-AEC <br>
+BNGG-AEC <br>
+URDG-AEC <br>
+AEC-ENG (Arts & Com)
+            </td>
+            <td class="room">
+R207 <br>
+R223 <br>
+R207 <br>
+- <br>
+-
+            </td>
+            <td class="teacher">
+   PN <br>
+   PM <br>
+   - <br>
+   - <br>
+   SG 
+            </td>
+          </tr>
+          
+          <tr>
+            <td>3:00 - 4:00</td>
+            <td class="subject-code">
+HISG-MINOR/CC <br>
+PEDG-MINOR (SC)
+            </td>
+            <td class="room">
+R207 <br>
+R115
+              </td>
+            <td class="teacher">
+ DS <br>
+ JG
+            </td>
+          </tr>
+          <tr>
+            <td>4:00 - 5:00</td>
+            <td class="subject-code">
+VAC-1
+            </td>
+            <td class="room">
+R207
+              </td>
+            <td class="teacher">
+BS
+            </td>
+          </tr>
+          <tr>
+            <td>5:00 - 6:00</td>
+            <td class="subject-code">No Class</td>
+            <td class="room">-</td>
+            <td class="teacher">-</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <!-- Saturday -->
+    <div id="saturday" class="tab-content">
+      <div class="day-header">
+        <h2 class="day-title">Saturday</h2>
+        <div class="current-time" id="saturday-time"></div>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Class</th>
+            <th>Room</th>
+            <th>Teacher</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>10:00 - 11:00</td>
+            <td class="subject-code">
+HISG-MINOR/CC
+            </td>
+            <td class="room">R207</td>
+            <td class="teacher">SB</td>
+          </tr>
+          <tr>
+            <td>11:00 - 12:00</td>
+            <td class="subject-code">
+PLSG-MINNOR/CC <br>
+SANG-MINOR/CC
+            </td>
+            <td class="room">
+R208 <br>
+R20            
+            </td>
+            <td class="teacher">
+CS <br>
+MM
+            </td>
+          </tr>
+          <tr>
+            <td>12:00 - 1:00</td>
+            <td class="subject-code">
+URDG-MINOR/CC <br>
+HISG-MINOR/CC<br>
+ENGG-MINOR/CC<br>
+BNGG-MINOR/CC<br>
+PEDG-MINOR/CC              
+            </td>
+            <td class="room">
+R103 <br>
+R209<br>
+R223<br>
+R220<br>
+R115
+            </td>
+            <td class="teacher">
+SK <br>
+-<br>
+MI<br>
+-<br>
+DR<br>
+JR
+            </td>
+          </tr>
+          <tr>
+            <td>1:00 - 2:00</td>
+            <td class="subject-code">
+PHIG-MINOR/CC-1 <br>
+JORG-MINOR/CC-1 <br>
+PEDG-MINOR/CC-1 
+            </td>
+            <td class="room">
+R201 <br>
+R207 <br>
+R115
+            </td>
+            <td class="teacher">
+   SB <br>
+   UB <br>
+   BS
+            </td>
+          </tr>
+          <tr>
+            <td>2:00 - 3:00</td>
+            <td class="subject-code">
+BNGG-AEC <br>
+AEC-ENG<br>
+HING-AEC<br>
+URDG-AEC<br>
+SANG-AEC
+            </td>
+            <td class="room">
+R219 <br>
+- <br>
+R223 <br>
+- <br>
+- 
+            </td>
+            <td class="teacher">
+ DR <br>
+ - <br>
+ -<br>
+ SK <br>
+ DC
+            </td>
+          </tr>
+          <tr>
+            <td>3:00 - 4:00</td>
+            <td class="subject-code">
+ACEL-HONS
+            </td>
+            <td class="room">
+  R127
+              </td>
+            <td class="teacher">
+  -
+              </td>
+          </tr>
+          <tr>
+            <td>4:00 - 5:00</td>
+            <td class="subject-code">
+AMGIA-H+G
+            </td>
+            <td class="room">
+  R127            
+            </td>
+            <td class="teacher">
+   -           
+            </td>
+          </tr>
+          <tr>
+            <td>5:00 - 6:00</td>
+            <td class="subject-code">
+No class
+            </td>
+            <td class="room">
+  -           
+            </td>
+            <td class="teacher">
+   -           
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <!-- Additional Features Section -->
+    <div class="tab-content features-section" style="display: none; padding: 30px;">
+      <h2 style="color: var(--secondary); margin-bottom: 20px; text-align: center;">Timetable Features</h2>
+      <div class="features-container">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-bell"></i>
+          </div>
+          <h3 class="feature-title">Real-time Updates</h3>
+          <p class="feature-desc">Automatically highlights your current class and shows real-time updates every minute.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+               <h3 class="feature-title">Fully Responsive</h3>
+          <p class="feature-desc">Works perfectly on all devices from smartphones to desktops with adaptive layout.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-print"></i>
+          </div>
+          <h3 class="feature-title">Printer Friendly</h3>
+          <p class="feature-desc">Special print styles ensure your timetable looks great when printed.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3 class="feature-title">Group Connect</h3>
+          <p class="feature-desc">Quick access to your class WhatsApp group for easy communication.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <a href="https://chat.whatsapp.com/BTpOdzsygvSA0Ya0wF2hg3" class="whatsapp-button" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+    <span class="whatsapp-tooltip">Join Class WhatsApp Group</span>
+  </a>
+  
+  <div class="footer">
+    <p><i class="fas fa-sync-alt"></i> Auto-updating • <i class="fas fa-bell"></i> Current class highlighted • <i class="fas fa-mobile-alt"></i> Fully Responsive</p>
+    <p>© 2023 BA Semester II Timetable | Department of Arts</p>
+  </div>
 
