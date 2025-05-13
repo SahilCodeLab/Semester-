@@ -1,195 +1,126 @@
  // Highlight current class based on time
     function highlightCurrentClass() {
-      console.log('Running highlightCurrentClass');
+      // Remove any existing highlights
       document.querySelectorAll('tr').forEach(row => {
         row.classList.remove('current-class');
       });
-
+      
       const now = new Date();
       const currentHour = now.getHours();
       const currentMinute = now.getMinutes();
-      const currentDay = now.getDay();
-      const currentTotalMinutes = currentHour * 60 + currentMinute;
-
+      const currentDay = now.getDay(); // 0=Sunday, 1=Monday, etc.
+      
+      // Only highlight if viewing today's timetable
       const activeTab = document.querySelector('.tab.active');
-      if (!activeTab) {
-        console.error('No active tab found. Highlighting aborted.');
-        return;
-      }
-
+      if (!activeTab) return;
+      
       const activeDay = activeTab.textContent.toLowerCase().trim();
-      const dayMap = {
-        'sunday': 0,
-        'monday': 1,
-        'tuesday': 2,
-        'wednesday': 3,
-        'thursday': 4,
-        'friday': 5,
-        'saturday': 6
-      };
-
-      if (dayMap[activeDay] !== currentDay) {
-        console.log(`Active day (${activeDay}) does not match current day (${currentDay})`);
-        return;
-      }
-
-      const activeContent = document.querySelector('.tab-content.active');
-      if (!activeContent) {
-        console.error('No active tab content found');
-        return;
-      }
-
-      const table = activeContent.querySelector('table');
-      if (table) {
-        console.log(`Table width for ${activeDay}: ${table.offsetWidth}px`);
-      }
-
-      const rows = activeContent.querySelectorAll('tbody tr');
-      if (rows.length === 0) {
-        console.error('No table rows found in active tab content');
-        return;
-      }
-
-      rows.forEach(row => {
-        const timeCell = row.cells[0];
-        const timeText = timeCell.textContent.trim();
-
-        if (!timeText.includes('-')) {
-          console.log(`Skipping row with invalid time format: ${timeText}`);
-          return;
-        }
-
-        try {
-          const [startTime, endTime] = timeText.split('-').map(t => t.trim());
-          const [startHour, startMinute] = startTime.split(':').map(Number);
-          let [endHour, endMinute] = endTime.split(':').map(Number);
-
-          if (endTime === '4:00') {
-            endHour = 16;
-            endMinute = 0;
+      const dayMap = {sunday: 0, monday: 1, tuesday: 2, wednesday: 3, thursday: 4, friday: 5, saturday: 6};
+      
+      if (dayMap[activeDay] === currentDay) {
+        const rows = document.querySelectorAll('.tab-content.active tbody tr');
+        
+        rows.forEach(row => {
+          const timeCell = row.cells[0];
+          if (timeCell.textContent.includes('-')) {
+            const [startTime, endTime] = timeCell.textContent.split('-').map(t => t.trim());
+            const [startHour, startMinute] = startTime.split(':').map(Number);
+            let endHour, endMinute;
+            
+            // Handle 12-hour format if needed
+            if (endTime.includes('AM') || endTime.includes('PM')) {
+              const [time, period] = endTime.split(' ');
+              [endHour, endMinute] = time.split(':').map(Number);
+              if (period === 'PM' && endHour !== 12) endHour += 12;
+              if (period === 'AM' && endHour === 12) endHour = 0;
+            } else {
+              [endHour, endMinute] = endTime.split(':').map(Number);
+            }
+            
+            const currentTotalMinutes = currentHour * 60 + currentMinute;
+            const startTotalMinutes = startHour * 60 + startMinute;
+            const endTotalMinutes = endHour * 60 + endMinute;
+            
+            if (currentTotalMinutes >= startTotalMinutes && currentTotalMinutes <= endTotalMinutes) {
+              row.classList.add('current-class');
+              // Smooth scroll to current class
+              setTimeout(() => {
+                row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              }, 300);
+            }
           }
-
-          const startHour24 = startHour < 12 && startHour >= 1 ? startHour + 12 : startHour;
-          const endHour24 = endHour < 12 && endHour >= 1 ? endHour + 12 : endHour;
-
-          const startTotalMinutes = startHour24 * 60 + startMinute;
-          const endTotalMinutes = endHour24 * 60 + endMinute;
-
-          console.log(`Checking time slot: ${startTime} - ${endTime} ` +
-            `(${startTotalMinutes} - ${endTotalMinutes} minutes) ` +
-            `against current time: ${currentHour}:${currentMinute} ` +
-            `(${currentTotalMinutes} minutes)`);
-
-          if (currentTotalMinutes >= startTotalMinutes && currentTotalMinutes <= endTotalMinutes) {
-            row.classList.add('current-class');
-            console.log(`Highlighted row: ${timeText} on ${activeDay}`);
-            setTimeout(() => {
-              row.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }, 300);
-          }
-        } catch (error) {
-          console.error(`Error parsing time for row: ${timeText}`, error);
-        }
-      });
+        });
+      }
     }
-
-    // Update current time display in 12-hour format
+    
+    // Update current time display
     function updateCurrentTime() {
-      console.log('Running updateCurrentTime');
       const now = new Date();
+      const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
       const dateString = now.toLocaleDateString([], { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-      const timeString = now.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true });
-
+      
       const activeTab = document.querySelector('.tab.active');
+      
       if (activeTab) {
         const activeDay = activeTab.textContent.toLowerCase().trim();
         const timeElement = document.getElementById(`${activeDay}-time`);
         if (timeElement) {
           timeElement.textContent = `${dateString} • ${timeString}`;
-          console.log(`Updated time for ${activeDay}: ${dateString} • ${timeString}`);
-        } else {
-          console.error(`Time element not found for day: ${activeDay}`);
         }
-      } else {
-        console.error('No active tab found for time update');
       }
     }
-
+    
     // Show selected day's content
     function showDay(day) {
-      console.log(`Attempting to show day: ${day}`);
+      // Hide all tab contents
       document.querySelectorAll('.tab-content').forEach(content => {
         content.classList.remove('active');
       });
-
+      
+      // Remove active class from all tabs
       document.querySelectorAll('.tab').forEach(tab => {
         tab.classList.remove('active');
         tab.classList.remove('holiday');
       });
-
-      const selectedContent = document.getElementById(day);
-      if (selectedContent) {
-        selectedContent.classList.add('active');
-        console.log(`Activated content for day: ${day}`);
-      } else {
-        console.error(`No content found for day: ${day}`);
-        return;
+      
+      // Show selected day's content
+      document.getElementById(day).classList.add('active');
+      
+      // Add active class to clicked tab
+      event.currentTarget.classList.add('active');
+      if (day === 'sunday') {
+        event.currentTarget.classList.add('holiday');
       }
-
-      const tab = document.querySelector(`.tab[onclick="showDay('${day}')"]`);
-      if (tab) {
-        tab.classList.add('active');
-        if (day === 'sunday') {
-          tab.classList.add('holiday');
-        }
-        console.log(`Activated tab for day: ${day}`);
-      } else {
-        console.error(`No tab found for day: ${day}`);
-      }
-
-      updateCurrentTime();
+      
+      // Update current class highlighting
       highlightCurrentClass();
+      updateCurrentTime();
     }
-
+    
     // Initialize on page load
-    document.addEventListener('DOMContentLoaded', function () {
-      console.log('Initializing page');
+    document.addEventListener('DOMContentLoaded', function() {
+      // Auto-select today's tab
       const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
       const today = new Date().getDay();
-      let todayDay = days[today];
-
-      if (!document.getElementById(todayDay)) {
-        console.warn(`Content for today (${todayDay}) not found, falling back to Monday`);
-        todayDay = 'monday';
-      }
-
-      const todayTab = document.querySelector(`.tab[onclick="showDay('${todayDay}')"]`);
+      const todayTab = document.querySelector(`.tab:nth-child(${today + 1})`);
       if (todayTab) {
-        todayTab.classList.add('active');
-        if (todayDay === 'sunday') {
+        todayTab.click();
+        if (today === 0) { // Sunday
           todayTab.classList.add('holiday');
         }
-        console.log(`Setting initial day to: ${todayDay}`);
-        showDay(todayDay);
-      } else {
-        console.error('No tabs found in the DOM, defaulting to Monday');
-        const mondayTab = document.querySelector(`.tab[onclick="showDay('monday')"]`);
-        if (mondayTab) {
-          mondayTab.classList.add('active');
-          showDay('monday');
-        } else {
-          console.error('No Monday tab found. Initialization failed.');
-        }
       }
-
+      
+      // Initial updates
       updateCurrentTime();
       highlightCurrentClass();
-
+      
+      // Set up periodic updates
       setInterval(() => {
         updateCurrentTime();
         highlightCurrentClass();
-      }, 60000);
-
+      }, 60000); // Update every minute
+      
+      // Add animation to features on scroll
       const featureCards = document.querySelectorAll('.feature-card');
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -199,13 +130,14 @@
           }
         });
       }, { threshold: 0.1 });
-
+      
       featureCards.forEach(card => {
         card.style.opacity = 0;
         card.style.transform = 'translateY(20px)';
         card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
         observer.observe(card);
       });
-
-      console.log('Page initialized successfully');
     });
+    
+    
+    
